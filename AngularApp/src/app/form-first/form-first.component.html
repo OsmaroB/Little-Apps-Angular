@@ -1,0 +1,22 @@
+<p>form-first works!</p>
+<p>Name</p>
+<input #nombre type="text" [value]="defaultName">
+<p>Email</p>
+<input #email type="email" name="" id="">
+<hr>
+<button (click)="onSendForm(email.value)">Send Form</button>
+<hr>
+<button (click)="onDefaultForm(nombre)">Default Form</button> 
+<p>{{ status }}</p>
+<hr>
+<div *ngIf="displayPassword; then showPassword; else hiddePassword">
+
+</div>
+
+
+<ng-template #showPassword>
+    <p>12345678x</p>
+</ng-template>
+<ng-template #hiddePassword>
+    <p>No mostrar la contraseña</p>
+</ng-template>
