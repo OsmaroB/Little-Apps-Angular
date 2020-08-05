@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//Se importa el servicio
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-form-first',
@@ -9,10 +11,23 @@ export class FormFirstComponent implements OnInit {
   status = "Form not submit";
   defaultName = "Osmaro";
   displayPassword = false;
-  constructor() { }
+  lightStatus = "GREEN";
+  names = ['Osmaro', "Kevin", "Benjamin", "Chepe"]
+  //Este decorador permite utilizar los elemetos traidos del componente PADRE
+  // @Input() parentDataToChild;
+  @Input('parentDataToChild') messageFrom
+
+  //HACER EL COMPONENTE @Output
+  @Output() childEvent = new EventEmitter();
+
+  //Variable para consumir informacion importada desde el servicio
+  course = [];
+  //En el constructor se importa lo que se hara en CourseService
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    
+    this.course = this.courseService.getCourses();
+    console.log(this.course);
   }
 
   onSendForm(email){
@@ -25,4 +40,7 @@ export class FormFirstComponent implements OnInit {
     nombre.value= this.defaultName;
   }
 
+  onSendEvent(){
+    this.childEvent.emit("Enviando desde hijo hasta padre");
+  }
 }

@@ -1,2 +1,3 @@
 <h1>Mi primera aplicacion en angular</h1>
-<app-form-first></app-form-first>
+<p>{{message}}</p>
+<app-form-first (childEvent)="message=$event" [parentDataToChild]="dataToChildFromParent"></app-form-first>

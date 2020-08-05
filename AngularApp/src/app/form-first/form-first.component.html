@@ -20,3 +20,26 @@
 <ng-template #hiddePassword>
     <p>No mostrar la contraseña</p>
 </ng-template>
+
+<!--SECCION DE SWITCH-->
+<div [ngSwitch]="lightStatus">
+    <div *ngSwitchCase= "'GREEN'">Verde</div>
+    <div *ngSwitchCase= "'RED'">Rojo</div>
+    <div *ngSwitchCase= "'YELLOW'">Amarillo</div>
+    <div *ngSwitchDefault>ROTO</div>
+</div>
+<!--DIRECTIVA FOR-->
+<div *ngFor="let name of names">
+    <p>{{name}}</p>
+</div>
+
+
+<!--COMPONENTE TRAIDO DEL ELEMENTO PADRE-->
+<p>{{messageFrom}}</p>
+
+<br>
+<br>
+<br>
+<hr>
+<!--SECCION PARA MANDAR EL EVENDO HIJO AL COMPONENTE PADRE-->
+<button (click) = "onSendEvent()">Enviar Evento</button>
