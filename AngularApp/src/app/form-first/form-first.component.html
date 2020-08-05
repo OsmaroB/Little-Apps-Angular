@@ -4,9 +4,9 @@
 <p>Email</p>
 <input #email type="email" name="" id="">
 <hr>
-<button (click)="onSendForm(email.value)">Send Form</button>
+<button mat-flat-button color="primary" (click)="onSendForm(email.value)">Send Form</button>
 <hr>
-<button (click)="onDefaultForm(nombre)">Default Form</button> 
+<button mat-flat-button color="primary" (click)="onDefaultForm(nombre)">Default Form</button> 
 <p>{{ status }}</p>
 <hr>
 <div *ngIf="displayPassword; then showPassword; else hiddePassword">
@@ -43,3 +43,11 @@
 <hr>
 <!--SECCION PARA MANDAR EL EVENDO HIJO AL COMPONENTE PADRE-->
 <button (click) = "onSendEvent()">Enviar Evento</button>
+
+<br><hr>
+<!--SECCION PARA PETICIONES HTTP-->
+<h1>Peticiones get con http</h1>
+<div *ngFor="let cour of course">
+    <p>{{cour.id}}, {{cour.name}}, {{cour.time}}</p>
+</div>
+<p>{{errorMessage}}</p>

@@ -22,17 +22,20 @@ export class FormFirstComponent implements OnInit {
 
   //Variable para consumir informacion importada desde el servicio
   course = [];
+  errorMessage= "";
   //En el constructor se importa lo que se hara en CourseService
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.course = this.courseService.getCourses();
-    console.log(this.course);
+    // this.course = this.courseService.getCourses();
+    this.courseService.getCourses().subscribe(data => this.course=data, error=>this.errorMessage = error);
+    
   }
 
   onSendForm(email){
     this.status = "El formulario a sido enviado con exito";
     console.log(email)
+    console.log(this.course)
   }
   onDefaultForm(nombre){
     this.status = "Form nor submit";
