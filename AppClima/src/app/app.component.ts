@@ -8,21 +8,15 @@ import { WeatherService } from './services/weather.service';
 })
 export class AppComponent  implements OnInit{
 
+  weather;
+  city;
+  country;
   constructor(private weatherService: WeatherService){
 
   }
   title = 'AppClima';
   ngOnInit(){
-    this.weatherService.getWeather('london','uk')
-    .subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
+    
   }
-  submitLocation(cityName,countryCode){
-    console.log(cityName,countryCode);
-    cityName.value = '';
-    countryCode.value = '';
-    return false;
-  }
+
 }
